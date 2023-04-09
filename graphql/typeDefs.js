@@ -15,21 +15,12 @@ input UserInput{
 }
 
 type Employee {
+    _id: String
     first_name: String
     last_name: String
     email: String
     gender: String
-    salary: Float
-}
-
-
-
-input EmployeeInput{
-    first_name: String
-    last_name: String
-    email: String
-    gender: String
-    salary: Float
+    salary: Int
 }
 
 type Query{
@@ -37,7 +28,7 @@ type Query{
         username: String
         password: String):Boolean
     getAllEmployees: [Employee]
-    getEmployee (ID: ID!): Employee
+    getEmployee (_id: String!): Employee
 }
 
 type Mutation {
@@ -50,15 +41,15 @@ type Mutation {
         last_name: String
         email: String
         gender: String
-        salary: Float): Employee
+        salary: Int): Employee
     updateEmployee(
-        ID : ID! 
+        _id : String! 
         first_name: String
         last_name: String
         email: String
         gender: String
-        salary: Float): Boolean
-    deleteEmployee(ID : ID!): Boolean
+        salary: Int): Boolean
+    deleteEmployee(_id : String!): Boolean
 }
 
 `

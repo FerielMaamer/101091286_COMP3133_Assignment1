@@ -19,8 +19,8 @@ module.exports = {
     
 
     //getEmployee (ID: ID!): Employee!
-        async getEmployee(_, {ID}){
-            return await Employee.findById(ID)
+        async getEmployee(_, {_id}){
+            return await Employee.findById(_id)
         },
     },
     Mutation: {
@@ -58,14 +58,14 @@ module.exports = {
     
 
     //deleteEmployee(ID : ID!): Boolean
-        async deleteEmployee(_,{ID}){
-            const wasDeleted = (await Employee.deleteOne({_id:ID})).deletedCount;
+        async deleteEmployee(_,{_id}){
+            const wasDeleted = (await Employee.deleteOne({_id:_id})).deletedCount;
             return wasDeleted;
         },
     //updateEmployee(ID : ID!, employee: Employee): Boolean
-        async updateEmployee(_, {ID, first_name, last_name, email,
+        async updateEmployee(_, {_id, first_name, last_name, email,
             gender, salary}){
-                const wasEdited = (await Employee.updateOne({_id:ID}, {
+                const wasEdited = (await Employee.updateOne({_id:_id}, {
                     first_name:first_name,
                     last_name:last_name,
                     email:email,
