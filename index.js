@@ -33,3 +33,18 @@ mongoose.connect(DB_URL, {
     process.exit();
 });
 
+async function startServer() {
+  await server.start();
+  const app = express();
+  server.applyMiddleware({ app });
+  const port = process.env.PORT || 4000;
+  
+
+  app.listen({ port: port }, () =>
+    console.log(
+      'Server is running on http://localhost/:4000$%7Bserver.graphqlPath%7D%60'
+    )
+  );
+}
+startServer();
+
